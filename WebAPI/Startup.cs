@@ -29,9 +29,19 @@ namespace WebAPI
         {
             services.AddDbContext<PeopleContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("Default"));
+                //options.UseSqlServer(Configuration.GetConnectionString("Default"));
+                options.UseSqlite(Configuration.GetConnectionString("Default"));
+
             });
-            
+
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000","http://192.168.254.109:3000");
+                });
+            });
+
             services.AddControllers();
         }
 
@@ -43,7 +53,8 @@ namespace WebAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 

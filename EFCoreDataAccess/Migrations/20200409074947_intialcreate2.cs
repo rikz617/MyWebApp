@@ -2,7 +2,7 @@
 
 namespace EFCoreDataAccess.Migrations
 {
-    public partial class testinsert : Migration
+    public partial class intialcreate2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -2,7 +2,7 @@
 
 namespace EFCoreDataAccess.Migrations
 {
-    public partial class InitialDBCreation : Migration
+    public partial class intialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,10 +11,12 @@ namespace EFCoreDataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false)
+                    Age = table.Column<int>(nullable: false),
+                    Account = table.Column<int>(nullable: false),
+                    MiddleName = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -22,11 +24,24 @@ namespace EFCoreDataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Values",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Values", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     StreetAddress = table.Column<int>(nullable: false),
                     City = table.Column<int>(nullable: false),
                     Street = table.Column<string>(nullable: true),
@@ -49,7 +64,7 @@ namespace EFCoreDataAccess.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     EmailAddress = table.Column<string>(nullable: true),
                     PersonId = table.Column<int>(nullable: true)
                 },
@@ -63,6 +78,21 @@ namespace EFCoreDataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Values",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "001" });
+
+            migrationBuilder.InsertData(
+                table: "Values",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 2, "002" });
+
+            migrationBuilder.InsertData(
+                table: "Values",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 3, "002" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_PersonId",
@@ -82,6 +112,9 @@ namespace EFCoreDataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "EmailsAddress");
+
+            migrationBuilder.DropTable(
+                name: "Values");
 
             migrationBuilder.DropTable(
                 name: "People");

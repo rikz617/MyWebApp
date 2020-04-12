@@ -6,8 +6,12 @@ namespace MyConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var mysub = new MySubClass().Name;
+            //Console.WriteLine("Hello World!");
+            //var mysub = new MySubClass().Name;
+            //new HashSetSample().SampleMethod();
+            //InterfacesSample interfaceSample = new InterfacesSample();
+
+            new HashSetSample().SampleMethod();
         }
     }
 

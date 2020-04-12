@@ -13,6 +13,7 @@ namespace EFCoreDataAccess.DataAccess
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Email> EmailsAddress { get; set; }
         public DbSet<Value> Values { get; set; }
+       
         protected override void OnModelCreating(ModelBuilder builder) 
         {
             builder.Entity<Value>().
