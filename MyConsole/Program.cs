@@ -2,7 +2,7 @@
 
 namespace MyConsole
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -11,7 +11,12 @@ namespace MyConsole
             //new HashSetSample().SampleMethod();
             //InterfacesSample interfaceSample = new InterfacesSample();
 
-            new HashSetSample().SampleMethod();
+            //new HashSetSample().SampleMethod();
+
+            //ThreadCreationProgram.Run();
+           new Singleton().PrintDetails("Hello");
+            
+
         }
     }
 

@@ -1,8 +1,6 @@
-﻿using EFCoreDataAccess.Models;
+﻿using Domain;
+using EFCoreDataAccess.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EFCoreDataAccess.DataAccess
 {
@@ -13,7 +11,9 @@ namespace EFCoreDataAccess.DataAccess
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Email> EmailsAddress { get; set; }
         public DbSet<Value> Values { get; set; }
-       
+
+        public DbSet<Activity> Activities { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder) 
         {
             builder.Entity<Value>().

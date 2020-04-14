@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EFCoreDataAccess
+﻿namespace EFCoreDataAccess
 {
     public class Address
       {

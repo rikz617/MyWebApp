@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Activities;
 using EFCoreDataAccess.DataAccess;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,7 +36,8 @@ namespace WebAPI
 
             });
 
-            services.AddCors(opt =>
+            services.AddMediatR(typeof(List.Handler).Assembly);
+           services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
                 {
